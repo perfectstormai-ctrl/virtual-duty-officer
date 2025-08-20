@@ -22,7 +22,13 @@ function WorkflowEditor() {
     const type = event.dataTransfer.getData('application/reactflow');
     if (!type) return;
     const position = project({ x: event.clientX, y: event.clientY });
-    const newNode = { id: `${type}_${nodes.length}`, type: 'default', position, data: { label: type } };
+    const newNode = {
+      id: `${type}_${nodes.length}`,
+      type: 'default',
+      position,
+      data: { label: type },
+      style: { border: '1px solid #777', padding: 10, borderRadius: 4 }
+    };
     setNodes((nds) => nds.concat(newNode));
   }, [project, nodes, setNodes]);
 
@@ -59,7 +65,20 @@ function WorkflowEditor() {
 
   const handleRun = async () => {
     setLogs([]);
-    await runWorkflow({ nodes, edges }, (m) => setLogs((l) => [...l, m]));
+    await runWorkflow(
+      { nodes, edges },
+      (m) => setLogs((l) => [...l, m]),
+      (id) =>
+        setNodes((nds) =>
+          nds.map((n) => ({
+            ...n,
+            style: {
+              ...(n.style || {}),
+              border: id && n.id === id ? '2px solid orange' : '1px solid #777'
+            }
+          }))
+        )
+    );
   };
 
   return (

@@ -1,9 +1,33 @@
 {
   "name": "sitrep_builder",
   "nodes": [
-    { "id": "trigger1", "type": "file_watch", "position": { "x": 0, "y": 0 }, "data": { "label": "File Watcher", "config": { "path": "/data/incident" } } },
-    { "id": "agent1", "type": "claude", "position": { "x": 250, "y": 0 }, "data": { "label": "Claude", "config": { "prompt": "Summarize this incident..." } } },
-    { "id": "output1", "type": "write_json", "position": { "x": 500, "y": 0 }, "data": { "label": "Write JSON", "config": { "path": "/output/sitreps" } } }
+    {
+      "id": "trigger1",
+      "type": "file_watch",
+      "position": { "x": 0, "y": 0 },
+      "data": {
+        "label": "File Watcher",
+        "config": { "path": "/data/incident" }
+      }
+    },
+    {
+      "id": "agent1",
+      "type": "claude",
+      "position": { "x": 250, "y": 0 },
+      "data": {
+        "label": "Claude",
+        "config": { "prompt": "Summarize this incident..." }
+      }
+    },
+    {
+      "id": "output1",
+      "type": "write_json",
+      "position": { "x": 500, "y": 0 },
+      "data": {
+        "label": "Write JSON",
+        "config": { "path": "/output/sitreps" }
+      }
+    }
   ],
   "edges": [
     { "id": "e1", "source": "trigger1", "target": "agent1" },
