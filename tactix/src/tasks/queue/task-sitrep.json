@@ -1,0 +1,10 @@
+{
+  "task_id": "T-9876",
+  "type": "generate_sitrep",
+  "priority": "high",
+  "context": {
+    "incidents_dir": "/data/incident",
+    "sop_file": "/sop/refs/current_ops.md",
+    "output_dir": "/outputs/sitreps"
+  }
+}
