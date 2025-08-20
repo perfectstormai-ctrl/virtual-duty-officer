@@ -1,4 +1,5 @@
 export interface Workflow {
+  name?: string;
   nodes: any[];
   edges: any[];
 }

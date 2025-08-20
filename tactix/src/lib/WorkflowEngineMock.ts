@@ -7,12 +7,13 @@ function sleep(ms: number) {
 export async function runWorkflow(
   flow: Workflow,
   logger: (msg: string) => void,
-  highlight?: (id: string) => void
+  highlight?: (id: string | null) => void
 ) {
   for (const node of flow.nodes) {
     logger(`Executing ${node.id}`);
     if (highlight) highlight(node.id);
     await sleep(300);
+    if (highlight) highlight(null);
   }
   logger('Workflow complete');
 }

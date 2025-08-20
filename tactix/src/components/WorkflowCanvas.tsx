@@ -4,6 +4,8 @@ import 'reactflow/dist/style.css';
 
 export interface WorkflowNodeData {
   label: string;
+  inputKey?: string;
+  outputKey?: string;
   config?: Record<string, any>;
 }
 
